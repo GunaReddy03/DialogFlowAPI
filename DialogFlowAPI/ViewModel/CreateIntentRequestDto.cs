@@ -15,7 +15,7 @@ namespace DialogFlowAPI.ViewModel
 
     public class PartDto
     {
-        public string? Text { get; set; }
+        public string? Phrase { get; set; }
     }
     public class UpdateIntentDto
     {

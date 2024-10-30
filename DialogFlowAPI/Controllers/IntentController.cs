@@ -79,7 +79,7 @@ namespace DialogFlowAPI.Controllers
                 return StatusCode(500, new { message = "Error retrieving intent", error = ex.Message });
             }
         }
-        [HttpPost("Create-Agent")]
+        [HttpPost("Create-Intent")]
         public async Task<IActionResult> CreateIntent(string agentId, [FromBody] NewIntentDto newIntentDto)
         {
             try
@@ -128,7 +128,7 @@ namespace DialogFlowAPI.Controllers
                 {
                     parts.Add(new Intent.Types.TrainingPhrase.Types.Part
                     {
-                        Text = part.Text
+                        Text = part.Phrase
                     });
                 }
 
@@ -224,7 +224,187 @@ namespace DialogFlowAPI.Controllers
                 return StatusCode(500, new { message = "Error deleting intent", error = ex.Message });
             }
         }
+        //Get Training Phrase from Intent
+        [HttpGet("GetAllTrainingPhrases/{agentId}/{intentId}")]
+        public async Task<IActionResult> GetAllTrainingPhrases(string agentId, string intentId)
+        {
+            try
+            {
+                // Replace with your actual project ID and location
+                string projectId = "default-yrln";
+                string location = "global"; // Adjust if necessary
 
+                // Create the intent resource name
+                IntentName intentName = new IntentName(projectId, location, agentId, intentId);
+
+                // Get the current intent
+                var getIntentRequest = new GetIntentRequest
+                {
+                    IntentName = intentName
+                };
+
+                var intent = await _intentsClient.GetIntentAsync(getIntentRequest);
+
+                // Extract training phrases
+                var trainingPhrases = intent.TrainingPhrases.Select(tp => new
+                {
+                    PhraseId = tp.Parts, // Assuming each training phrase has a unique ID
+                    Parts = tp.Parts.Select(p => p.Text).ToList(),
+                    RepeatCount = tp.RepeatCount
+                }).ToList();
+
+                // Return the list of training phrases
+                return Ok(new { trainingPhrases });
+            }
+            catch (Exception ex)
+            {
+                // Handle errors and return a proper response
+                return StatusCode(500, new { message = "Error retrieving training phrases", error = ex.Message });
+            }
+        }
+
+        // Add a Training Phrase to intent
+
+        [HttpPost("AddTrainingPhrase/{agentId}/{intentId}")]
+        public async Task<IActionResult> AddTrainingPhrase(string agentId, string intentId, [FromBody] PartDto newTrainingPhraseDto)
+        {
+            try
+            {
+                // Replace with your actual project ID and location
+                string projectId = "default-yrln";
+                string location = "global"; // Adjust if necessary
+
+                // Create the intent resource name
+                IntentName intentName = new IntentName(projectId, location, agentId, intentId);
+
+                // Get the current intent
+                var getIntentRequest = new GetIntentRequest
+                {
+                    IntentName = intentName
+                };
+
+                var intent = await _intentsClient.GetIntentAsync(getIntentRequest);
+
+                // Add new training phrases
+                intent.TrainingPhrases.Add(CreateTrainingPhrase(newTrainingPhraseDto.Phrase));
+
+                // Create the request to update the intent with the new training phrases
+                var updateIntentRequest = new UpdateIntentRequest
+                {
+                    Intent = intent
+                };
+
+                // Update the intent in Dialogflow CX
+                var updatedIntent = await _intentsClient.UpdateIntentAsync(updateIntentRequest);
+
+                // Return success response
+                return Ok(new { message = "Training phrase added successfully", intentId = updatedIntent.Name });
+            }
+            catch (Exception ex)
+            {
+                // Handle errors and return a proper response
+                return StatusCode(500, new { message = "Error adding training phrase", error = ex.Message });
+            }
+        }
+        // Method to create a training phrase object from the DTO
+        private Intent.Types.TrainingPhrase CreateTrainingPhrase(string phrase)
+        {
+            return new Intent.Types.TrainingPhrase
+            {
+                Parts = { new Intent.Types.TrainingPhrase.Types.Part { Text = phrase } },
+                RepeatCount = 1
+            };
+        }
+        // Delete a particular Training Phase 
+        [HttpDelete("DeleteTrainingPhrase/{agentId}/{intentId}/{phraseIndex}")]
+        public async Task<IActionResult> DeleteTrainingPhrase(string agentId, string intentId, int phraseIndex)
+        {
+            try
+            {
+                // Replace with your actual project ID and location
+                string projectId = "default-yrln";
+                string location = "global"; // Adjust if necessary
+
+                // Create the intent resource name
+                IntentName intentName = new IntentName(projectId, location, agentId, intentId);
+
+                // Get the current intent
+                var getIntentRequest = new GetIntentRequest
+                {
+                    IntentName = intentName
+                };
+
+                var intent = await _intentsClient.GetIntentAsync(getIntentRequest);
+
+                // Check if the index is valid
+                if (phraseIndex < 0 || phraseIndex >= intent.TrainingPhrases.Count)
+                {
+                    return BadRequest(new { message = "Invalid training phrase index" });
+                }
+
+                // Remove the specified training phrase by index
+                intent.TrainingPhrases.RemoveAt(phraseIndex);
+
+                // Create the request to update the intent
+                var updateIntentRequest = new UpdateIntentRequest
+                {
+                    Intent = intent
+                };
+
+                // Update the intent in Dialogflow CX
+                var updatedIntent = await _intentsClient.UpdateIntentAsync(updateIntentRequest);
+
+                // Return success response
+                return Ok(new { message = "Training phrase deleted successfully", intentId = updatedIntent.Name });
+            }
+            catch (Exception ex)
+            {
+                // Handle errors and return a proper response
+                return StatusCode(500, new { message = "Error deleting training phrase", error = ex.Message });
+            }
+        }
+        // Delete all Training Phrase in intent 
+        [HttpDelete("DeleteAllTrainingPhrases/{agentId}/{intentId}")]
+        public async Task<IActionResult> DeleteAllTrainingPhrases(string agentId, string intentId)
+        {
+            try
+            {
+                // Replace with your actual project ID and location
+                string projectId = "default-yrln";
+                string location = "global"; // Adjust if necessary
+
+                // Create the intent resource name
+                IntentName intentName = new IntentName(projectId, location, agentId, intentId);
+
+                // Get the current intent
+                var getIntentRequest = new GetIntentRequest
+                {
+                    IntentName = intentName
+                };
+
+                var intent = await _intentsClient.GetIntentAsync(getIntentRequest);
+
+                // Clear all training phrases
+                intent.TrainingPhrases.Clear();
+
+                // Create the request to update the intent
+                var updateIntentRequest = new UpdateIntentRequest
+                {
+                    Intent = intent
+                };
+
+                // Update the intent in Dialogflow CX
+                var updatedIntent = await _intentsClient.UpdateIntentAsync(updateIntentRequest);
+
+                // Return success response
+                return Ok(new { message = "All training phrases deleted successfully", intentId = updatedIntent.Name });
+            }
+            catch (Exception ex)
+            {
+                // Handle errors and return a proper response
+                return StatusCode(500, new { message = "Error deleting all training phrases", error = ex.Message });
+            }
+        }
 
 
 

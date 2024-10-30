@@ -1,0 +1,816 @@
+[
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.AgentController",
+    "Method": "CreateAgent",
+    "RelativePath": "api/Agent/CreateAgent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentDto",
+        "Type": "DialogFlowAPI.ViewModel.AgentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.AgentController",
+    "Method": "GetAgents",
+    "RelativePath": "api/Agent/Get-Agents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.AgentController",
+    "Method": "GetAvailableLocations",
+    "RelativePath": "api/Agent/GetAvailableLocations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.AgentController",
+    "Method": "GetDefaultLanguages",
+    "RelativePath": "api/Agent/GetDefaultLanguages",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.AgentController",
+    "Method": "GetTimeZones",
+    "RelativePath": "api/Agent/GetTimeZones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PromiseApp.Controllers.AuthenticateController",
+    "Method": "Get",
+    "RelativePath": "api/Authenticate/LoggedInUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PromiseApp.Controllers.AuthenticateController",
+    "Method": "Login",
+    "RelativePath": "api/Authenticate/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DialogFlowAPI.Models.Logins\u002BLoginModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PromiseApp.Controllers.AuthenticateController",
+    "Method": "Register",
+    "RelativePath": "api/Authenticate/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DialogFlowAPI.Models.Logins\u002BRegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PromiseApp.Controllers.AuthenticateController",
+    "Method": "RegisterMentor",
+    "RelativePath": "api/Authenticate/Register-Agent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DialogFlowAPI.Models.Logins\u002BRegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PromiseApp.Controllers.AuthenticateController",
+    "Method": "RegisterAdmin",
+    "RelativePath": "api/Authenticate/Register-As-admin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DialogFlowAPI.Models.Logins\u002BRegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PromiseApp.Controllers.AuthenticateController",
+    "Method": "RegisterStudent",
+    "RelativePath": "api/Authenticate/Register-Customer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DialogFlowAPI.Models.Logins\u002BRegisterModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.EntitiesController",
+    "Method": "CreateEntity",
+    "RelativePath": "api/Entities/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "createEntityDto",
+        "Type": "DialogFlowAPI.ViewModel.CreateEntityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.EntitiesController",
+    "Method": "DeleteEntity",
+    "RelativePath": "api/Entities/delete/{entityTypeId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "entityTypeId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.EntitiesController",
+    "Method": "GetEntities",
+    "RelativePath": "api/Entities/Get-Entities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.EntitiesController",
+    "Method": "GetEntityById",
+    "RelativePath": "api/Entities/get/{entityTypeId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "entityTypeId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.EntitiesController",
+    "Method": "UpdateEntity",
+    "RelativePath": "api/Entities/update/{entityTypeId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "entityTypeId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateEntityDto",
+        "Type": "DialogFlowAPI.ViewModel.CreateEntityDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.FlowController",
+    "Method": "CreateSimpleFlow",
+    "RelativePath": "api/Flow/create-agent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowDto",
+        "Type": "DialogFlowAPI.ViewModel.SimpleFlowDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.FlowController",
+    "Method": "DeleteFlow",
+    "RelativePath": "api/Flow/delete/{flowId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.FlowController",
+    "Method": "GetFlows",
+    "RelativePath": "api/Flow/Flow List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "GetIntentById",
+    "RelativePath": "api/Intent/{Get-By-intentId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "intentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Get-By-intentId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "DeleteIntent",
+    "RelativePath": "api/Intent/{intentId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "intentId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "AddTrainingPhrase",
+    "RelativePath": "api/Intent/AddTrainingPhrase/{agentId}/{intentId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "intentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "newTrainingPhraseDto",
+        "Type": "DialogFlowAPI.ViewModel.PartDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "CreateIntent",
+    "RelativePath": "api/Intent/Create-Intent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newIntentDto",
+        "Type": "DialogFlowAPI.ViewModel.NewIntentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "DeleteAllTrainingPhrases",
+    "RelativePath": "api/Intent/DeleteAllTrainingPhrases/{agentId}/{intentId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "intentId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "DeleteTrainingPhrase",
+    "RelativePath": "api/Intent/DeleteTrainingPhrase/{agentId}/{intentId}/{phraseIndex}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "intentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "phraseIndex",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "GetIntents",
+    "RelativePath": "api/Intent/Get-Intents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "GetAllTrainingPhrases",
+    "RelativePath": "api/Intent/GetAllTrainingPhrases/{agentId}/{intentId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "intentId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.IntentController",
+    "Method": "UpdateIntent",
+    "RelativePath": "api/Intent/update/{intentId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "intentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateIntentDto",
+        "Type": "DialogFlowAPI.ViewModel.UpdateIntentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.PageController",
+    "Method": "CreatePage",
+    "RelativePath": "api/Page/create/{agentId}/{flowId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "pageDto",
+        "Type": "DialogFlowAPI.Controllers.PageController\u002BPageDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.PageController",
+    "Method": "DeletePage",
+    "RelativePath": "api/Page/delete/{agentId}/{flowId}/{pageId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "pageId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.PageController",
+    "Method": "GetPageById",
+    "RelativePath": "api/Page/GetPage",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.PageController",
+    "Method": "GetPages",
+    "RelativePath": "api/Page/Page List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.RoutesController",
+    "Method": "GetTransitionRoutes",
+    "RelativePath": "api/Routes/{agentId}/{flowId}/transitionRoutes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.RoutesController",
+    "Method": "AddPageParameter",
+    "RelativePath": "api/Routes/addPageParameter",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "parameterDto",
+        "Type": "DialogFlowAPI.ViewModel.ParameterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.RoutesController",
+    "Method": "CreateEntryFulfillment",
+    "RelativePath": "api/Routes/createEntryFulfillment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "fulfillmentDto",
+        "Type": "DialogFlowAPI.ViewModel.FulfillmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.RoutesController",
+    "Method": "CreateTransitionRoute",
+    "RelativePath": "api/Routes/createTransitionRoute",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AgentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FlowId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "transitionRouteDto",
+        "Type": "DialogFlowAPI.ViewModel.TransitionRouteDto2",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.RoutesController",
+    "Method": "CreateTransitionRouteInPage",
+    "RelativePath": "api/Routes/createTransitionRouteInPage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "transitionRouteDto",
+        "Type": "DialogFlowAPI.ViewModel.TransitionRouteDto2",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.RoutesController",
+    "Method": "UpdateEntryFulfillment",
+    "RelativePath": "api/Routes/updateEntryFulfillment",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "fulfillmentDto",
+        "Type": "DialogFlowAPI.ViewModel.FulfillmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.RoutesController",
+    "Method": "UpdateTransitionRoute",
+    "RelativePath": "api/Routes/updateTransitionRoute",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AgentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FlowId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TransitionRouteId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "transitionRouteDto",
+        "Type": "DialogFlowAPI.ViewModel.TransitionRouteDto2",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -35,6 +35,11 @@ builder.Services.AddSingleton<FlowsClient>(sp =>
     // Initializes the Dialogflow CX client
     return FlowsClient.Create();
 });
+builder.Services.AddSingleton<PagesClient>(sp =>
+{
+    // Initializes the Dialogflow CX client
+    return PagesClient.Create();
+});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -43,7 +48,7 @@ builder.Services.AddControllers()
     .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); });
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Dry-Cleaning", Version = "v1" });
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "DialogFlow", Version = "v1" });
     c.DescribeAllParametersInCamelCase();
     //c.DescribeAllEnumsAsStrings();
     c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme

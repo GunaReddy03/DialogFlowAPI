@@ -14,8 +14,19 @@ namespace DialogFlowAPI.DbContext
           
         }
         public DbSet<TempClass> TempData { get; set; }
+        public DbSet<ApplicationUser> User { get; set; }
+        public DbSet<AgentUserModel> AgentUser { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //builder.Entity<AgentUserModel>()
+            //.HasKey(au => new { au.UserId, au.AgentID });
+
+            //// Configure relationships if needed
+            //builder.Entity<AgentUserModel>()
+            //    .HasOne(au => au.ApplicationUser)
+            //    .WithMany()
+            //    .HasForeignKey(au => au.UserId)
+            //    .OnDelete(DeleteBehavior.Cascade);
             base.OnModelCreating(builder);
 
         }
