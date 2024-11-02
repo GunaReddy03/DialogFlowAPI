@@ -20,43 +20,44 @@ namespace DialogFlowAPI.Controllers
         {
             try
             {
-                // Replace these with your actual project and agent details
                 string projectId = "default-yrln";
-                string location = "global"; // The Dialogflow CX agent ID
+                string location = "global";
 
-                // Create the parent resource name (AgentName)
                 AgentName parent = new AgentName(projectId, location, agentId);
 
-                // Prepare request to list entity types
                 var request = new ListEntityTypesRequest
                 {
                     ParentAsAgentName = parent
                 };
 
-                // Fetch the entities from Dialogflow CX
-                var entityTypes = new List<EntityType>();
+                var entityTypesList = new List<object>();
 
                 await foreach (var entityType in _entityTypesClient.ListEntityTypesAsync(request))
                 {
-                    entityTypes.Add(entityType);
+                    var entityTypeId = entityType.Name.Split('/').Last();
+
+                    var parameters = entityType.Entities.Select(entity => new
+                    {
+                        ParameterName = entity.Value,
+                        Synonyms = entity.Synonyms.ToList()
+                    }).ToList();
+
+                    entityTypesList.Add(new
+                    {
+                        EntityTypeId = entityTypeId,
+                        DisplayName = entityType.DisplayName,
+                        Parameters = parameters
+                    });
                 }
 
-                // Transform the result to a simple DTO (Optional, you can directly return the entityTypes if desired)
-                var result = entityTypes.Select(et => new EntityTypeResponseDto
-                {
-                    DisplayName = et.DisplayName,
-                    EntityTypeId = et.Name
-                }).ToList();
-
-                // Return the list of entities
-                return Ok(result);
+                return Ok(entityTypesList);
             }
             catch (Exception ex)
             {
-                // Handle errors and return a proper response
                 return StatusCode(500, new { message = "Error retrieving entities", error = ex.Message });
             }
         }
+
         [HttpGet("get/{entityTypeId}")]
         public async Task<IActionResult> GetEntityById(string agentId ,string entityTypeId)
         {

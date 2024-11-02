@@ -295,7 +295,7 @@
   {
     "ContainingType": "DialogFlowAPI.Controllers.FlowController",
     "Method": "GetFlows",
-    "RelativePath": "api/Flow/Flow List",
+    "RelativePath": "api/Flow/FlowList",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -809,6 +809,89 @@
         "Name": "transitionRouteDto",
         "Type": "DialogFlowAPI.ViewModel.TransitionRouteDto2",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.SessionController",
+    "Method": "GetAgentResponse",
+    "RelativePath": "api/Session/GetAgentResponse",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sessionId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "flowId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userQuery",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.SessionController",
+    "Method": "SendMessage",
+    "RelativePath": "api/Session/SendMessage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sessionId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userquery",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DialogFlowAPI.Controllers.SessionController",
+    "Method": "StartSession",
+    "RelativePath": "api/Session/StartSession",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agentId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sessionId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "userquery",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

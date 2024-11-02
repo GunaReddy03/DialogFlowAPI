@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DialogFlowAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be64a23a0a28ad99f66c07363f4fe43418969df8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d141e5a75663c375e521f0059959fb72a8434afb")]
 [assembly: System.Reflection.AssemblyProductAttribute("DialogFlowAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DialogFlowAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

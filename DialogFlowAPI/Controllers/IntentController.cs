@@ -21,39 +21,45 @@ namespace DialogFlowAPI.Controllers
         {
             try
             {
-                // Replace with your actual project ID, agent ID, and location
                 string projectId = "default-yrln";
-                string location = "global"; // Usually 'global' for Dialogflow CX
+                string location = "global";
 
-                // Create the parent resource name (agent path)
                 AgentName parent = new AgentName(projectId, location, agentId);
 
-                // Request object for listing intents
                 var request = new ListIntentsRequest
                 {
                     ParentAsAgentName = parent
                 };
 
-                var intentsList = new List<Intent>();
+                var intentsList = new List<object>();
 
-                // Fetch the intents using PagedAsyncEnumerable
                 PagedAsyncEnumerable<ListIntentsResponse, Intent> response = _intentsClient.ListIntentsAsync(request);
 
-                // Asynchronously iterate through the intents and add them to the list
                 await foreach (var intent in response)
                 {
-                    intentsList.Add(intent);
+                    var intentId = intent.Name.Split('/').Last();
+
+                    var trainingPhrases = intent.TrainingPhrases.Select(tp => new
+                    {
+                        Phrases = tp.Parts.Select(part => part.Text).ToList()
+                    }).ToList();
+
+                    intentsList.Add(new
+                    {
+                        IntentId = intentId,
+                        DisplayName = intent.DisplayName,
+                        TrainingPhrases = trainingPhrases
+                    });
                 }
 
-                // Return the list of intents as a response
                 return Ok(intentsList);
             }
             catch (Exception ex)
             {
-                // Handle errors and return a proper response
                 return StatusCode(500, new { message = "Error retrieving intents", error = ex.Message });
             }
         }
+
         [HttpGet("{Get-By-intentId}")]
         public async Task<IActionResult> GetIntentById(string agentId,string intentId)
         {

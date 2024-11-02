@@ -17,7 +17,7 @@ namespace DialogFlowAPI.Controllers
         }
 
         // GET: /flow/list
-        [HttpGet("Flow List")]
+        [HttpGet("FlowList")]
         public async Task<IActionResult> GetFlows(string agentId)
         {
             try
@@ -25,7 +25,6 @@ namespace DialogFlowAPI.Controllers
                 // Replace with your actual project ID, location, and agent ID
                 string projectId = "default-yrln";
                 string location = "global"; // Adjust if necessary
-                // = "your-agent-id";
 
                 // Create the parent agent resource name
                 AgentName parent = new AgentName(projectId, location, agentId);
@@ -36,15 +35,24 @@ namespace DialogFlowAPI.Controllers
                     ParentAsAgentName = parent
                 };
 
-                // Create a list to hold the flows
-                var flowsList = new List<Flow>();
+                // List to hold only flow IDs and names
+                var flowsList = new List<object>();
 
                 // Fetch the flows from Dialogflow CX
                 var flows = _flowsClient.ListFlowsAsync(request);
 
                 await foreach (var flow in flows)
                 {
-                    flowsList.Add(flow);
+                    // Extract the Flow ID from the full route
+                    var flowRoute = flow.Name; // Full flow route
+                    var flowId = flowRoute.Split('/').Last(); // Extract the flow ID
+
+                    flowsList.Add(new
+                    {
+                        FlowId = flowId,             // Extracted Flow ID
+                        FlowRoute = flowRoute,       // Full route for reference
+                        FlowName = flow.DisplayName  // Flow Name
+                    });
                 }
 
                 // Return the list of flows
@@ -56,6 +64,7 @@ namespace DialogFlowAPI.Controllers
                 return StatusCode(500, new { message = "Error retrieving flows", error = ex.Message });
             }
         }
+
         [HttpPost("create-agent")]
         public async Task<IActionResult> CreateSimpleFlow(string agentId,[FromBody] SimpleFlowDto flowDto)
         {

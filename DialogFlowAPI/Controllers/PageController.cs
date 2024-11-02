@@ -22,39 +22,55 @@ namespace DialogFlowAPI.Controllers
         {
             try
             {
-                // Replace with your actual project ID and location
                 string projectId = "default-yrln";
-                string location = "global"; // Adjust if necessary
+                string location = "global";
 
-                // Create the parent flow resource name, now including agentId
+                // Construct the flow name as the parent resource name
                 FlowName parent = new FlowName(projectId, location, agentId, flowId);
 
-                // Create a request to list pages
+                // Set up the request to list pages under the flow
                 var request = new ListPagesRequest
                 {
                     ParentAsFlowName = parent
                 };
 
-                // Create a list to hold the pages
-                var pagesList = new List<Page>();
+                var pagesList = new List<object>();
 
-                // Fetch the pages from Dialogflow CX
+                // Fetch pages asynchronously
                 var pages = _pagesClient.ListPagesAsync(request);
 
+                // Iterate over each page and retrieve necessary details
                 await foreach (var page in pages)
                 {
-                    pagesList.Add(page);
+                    var pageId = page.Name.Split('/').Last();
+
+                    // Extract transition routes for each page
+                    var transitionRoutes = page.TransitionRoutes.Select(route => new
+                    {
+                        RouteId = route.Name,
+                        Intent = route.Intent,
+                        Condition = route.Condition,
+                        TriggerFulfillmentMessages = route.TriggerFulfillment?.Messages.Select(msg => msg.Text?.Text_.FirstOrDefault()).ToList()
+                    }).ToList();
+
+                    // Add each page’s information to the list
+                    pagesList.Add(new
+                    {
+                        PageId = pageId,
+                        DisplayName = page.DisplayName,
+                        PageRoute = page.Name,  // Route to the page
+                        TransitionRoutes = transitionRoutes
+                    });
                 }
 
-                // Return the list of pages
                 return Ok(pagesList);
             }
             catch (Exception ex)
             {
-                // Handle errors and return a proper response
                 return StatusCode(500, new { message = "Error retrieving pages", error = ex.Message });
             }
         }
+
         [HttpGet("GetPage")]
         public async Task<IActionResult> GetPageById(string agentId, string flowId, string pageId)
         {
