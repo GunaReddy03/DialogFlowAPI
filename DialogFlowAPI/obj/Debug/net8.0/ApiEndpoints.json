@@ -846,32 +846,6 @@
   },
   {
     "ContainingType": "DialogFlowAPI.Controllers.SessionController",
-    "Method": "SendMessage",
-    "RelativePath": "api/Session/SendMessage",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "agentId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "sessionId",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "userquery",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DialogFlowAPI.Controllers.SessionController",
     "Method": "StartSession",
     "RelativePath": "api/Session/StartSession",
     "HttpMethod": "POST",
